@@ -138,7 +138,63 @@
   </footer>
 
   <script>
-    // 你的计算和更新逻辑（保持不变）
+    // 你的计算和更新逻辑（保持不变
+    function filterNumberInput(input) {
+      input.value = input.value.replace(/[^0-9]/g, '');
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const machineId = document.getElementById("machine-id").value;
+      const machineType = document.querySelector('input[name="machine-type"]:checked').value;
+      const machine = parseInt(document.getElementById("machine").value) || 0;
+      const qualified = parseInt(document.getElementById("qualified").value) || 0;
+      const discard = parseInt(document.getElementById("discard").value) || 0;
+
+      let summary = "总结：";
+      if (!machineId || machine <= 0) {
+        document.getElementById("summary").innerText = summary + "-";
+        return;
+      }
+
+      let fragmentCount = 0;
+      let fragmentRate = "";
+      let resultType = "";
+
+      if (qualified > machine) { 
+        const missingPieces = qualified - machine + discard;
+        fragmentCount = missingPieces;
+        fragmentRate = ((fragmentCount / machine) * 100).toFixed(2) + "%";
+        resultType = `少片${fragmentCount} 剔除碎片${discard} 碎片率${fragmentRate}`;
+      } else { 
+        const extraPieces = machine - qualified - discard;
+        if (extraPieces < 0) {
+          fragmentCount = Math.abs(extraPieces);
+          fragmentRate = ((fragmentCount / machine) * 100).toFixed(2) + "%";
+          resultType = `少片${fragmentCount} 剔除碎片${discard} 碎片率${fragmentRate}`;
+        } else {
+          fragmentCount = extraPieces;
+          resultType = `多片${fragmentCount}`;
+        }
+      }
+
+      summary += `${machineId} ${resultType} ${machineType}`;
+      document.getElementById("summary").innerText = summary;
+    }
+
+    function copySummary() {
+      const summaryText = document.getElementById("summary").innerText.replace("总结：", "").trim();
+      if (summaryText === "-") {
+        alert("暂无数据可复制！");
+        return;
+      }
+
+      navigator.clipboard.writeText(summaryText).then(() => {
+        alert("总结已复制！");
+      }).catch(() => {
+        alert("复制失败，请手动复制！");
+      });
+    }
 
     //更新逻辑
 
