@@ -1,17 +1,10 @@
 {
-  "name": "我的应用",                      
-  // 应用的完整名称
-  "short_name": "应用",                   
-  // 简短名称（主屏幕显示）
-  "start_url": "/index.html",            
-  // 用户点击应用图标时加载的页面
-  "display": "standalone",               
-  // 显示模式：独立窗口
-  "background_color": "#EDEDED",         
-  // 启动画面的背景颜色
-  "theme_color": "#0078d7",            
-  // 任务栏、标题栏的主题颜色
-  // 定义应用图标
+  "name": "我的应用",
+  "short_name": "应用",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#EDEDED",
+  "theme_color": "#0078d7",
   "icons": [
     {
       "src": "icon-192x192.png",
