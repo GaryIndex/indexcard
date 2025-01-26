@@ -115,7 +115,7 @@
     <h1>碎片率计算器</h1>
     <div class="input-group">
       <label for="machine-id">机台号</label>
-      <input type="text" id="machine-id" placeholder="请输入机台号" oninput="filterNumberInput(this)">
+      <input type="number" id="machine-id" placeholder="请输入机台号" oninput="filterNumberInput(this)">
     </div>
     <div class="radio-group" onchange="updateSummary()">
       <label><input type="radio" name="machine-type" value="双拼" checked> 双拼</label>
@@ -123,15 +123,15 @@
     </div>
     <div class="input-group">
       <label for="machine">机跑数</label>
-      <input type="text" id="machine" placeholder="请输入机跑数" oninput="filterNumberInput(this)">
+      <input type="number" id="machine" placeholder="请输入机跑数" oninput="filterNumberInput(this)">
     </div>
     <div class="input-group">
       <label for="qualified">合格数</label>
-      <input type="text" id="qualified" placeholder="请输入合格数" oninput="filterNumberInput(this)">
+      <input type="number" id="qualified" placeholder="请输入合格数" oninput="filterNumberInput(this)">
     </div>
     <div class="input-group">
       <label for="discard">剔除碎</label>
-      <input type="text" id="discard" placeholder="请输入剔除碎" oninput="filterNumberInput(this)">
+      <input type="number" id="discard" placeholder="请输入剔除碎" oninput="filterNumberInput(this)">
     </div>
     <div class="result" id="summary">总结：-</div>
     <button class="button" onclick="copySummary()">复制总结</button>
