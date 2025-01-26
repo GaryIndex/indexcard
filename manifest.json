@@ -1,21 +1,8 @@
 {
   "name": "碎片率计算器",
-  "short_name": "碎片率",
-  "description": "一个用来计算碎片率的工具",
-  "start_url": "/index.html", 
-  "display": "standalone",  // 关键部分，确保应用以独立方式打开
-  "background_color": "#0051a8",  // 背景颜色
-  "theme_color": "#EDEDED",  // 主题颜色
-  "icons": [
-    {
-      "src": "/path/to/your/icon.png",  // 确保你的图标路径正确
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/path/to/your/icon-512.png",  // 确保你的图标路径正确
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "short_name": "计算器",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EDEDED",
+  "theme_color": "#007aff"
 }
