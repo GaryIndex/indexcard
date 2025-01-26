@@ -7,7 +7,7 @@
   // 用户点击应用图标时加载的页面
   "display": "standalone",               
   // 显示模式：独立窗口
-  "background_color": "#ffffff",         
+  "background_color": "#EDEDED",         
   // 启动画面的背景颜色
   "theme_color": "#0078d7",            
   // 任务栏、标题栏的主题颜色
