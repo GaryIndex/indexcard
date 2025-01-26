@@ -202,38 +202,6 @@
     }
 
     //更新逻辑
-
-    // 检测独立模式
-    function isStandaloneMode() {
-      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    }
-
-    if (isStandaloneMode()) {
-      console.log('应用已添加到主屏幕');
-    } else {
-      console.log('应用未添加到主屏幕');
-    }
-
-    // 监听 beforeinstallprompt 事件
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-      deferredPrompt = event;
-      console.log('可以添加到主屏幕');
-    });
-
-    // 当用户选择安装后
-    window.addEventListener('appinstalled', () => {
-      console.log('应用已添加到主屏幕');
-      alert('感谢您将应用添加到主屏幕！');
-      localStorage.setItem('isAppInstalled', 'true'); // 保存状态
-    });
-
-    // 检查是否已安装
-    if (localStorage.getItem('isAppInstalled') === 'true') {
-      console.log('应用已安装');
-    }
-
     // 注册 Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
