@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#EDEDED">
+  <link rel="manifest" href="/manifest.json"> <!-- 引用manifest -->
+  <title>碎片率计算器</title>
+  <style>
+    /* 样式代码省略（保持你的现有样式） */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>碎片率计算器</h1>
+    <div class="input-group">
+      <label for="machine-id">机台号</label>
+      <input type="text" id="machine-id" placeholder="请输入机台号" oninput="filterNumberInput(this)">
+    </div>
+    <div class="radio-group" onchange="updateSummary()">
+      <label><input type="radio" name="machine-type" value="双拼" checked> 双拼</label>
+      <label><input type="radio" name="machine-type" value="单拼"> 单拼</label>
+    </div>
+    <div class="input-group">
+      <label for="machine">机跑数</label>
+      <input type="text" id="machine" placeholder="请输入机跑数" oninput="filterNumberInput(this)">
+    </div>
+    <div class="input-group">
+      <label for="qualified">合格数</label>
+      <input type="text" id="qualified" placeholder="请输入合格数" oninput="filterNumberInput(this)">
+    </div>
+    <div class="input-group">
+      <label for="discard">剔除碎</label>
+      <input type="text" id="discard" placeholder="请输入剔除碎" oninput="filterNumberInput(this)">
+    </div>
+    <div class="result" id="summary">总结：-</div>
+    <button class="button" onclick="copySummary()">复制总结</button>
+  </div>
+
+  <footer>
+    <p>© 2025 GaryIndex Comes from GitHub </p>
+  </footer>
+
+  <script>
+    // 你的计算和更新逻辑（保持不变）
+    function filterNumberInput(input) { ... }
+    function updateSummary() { ... }
+    function copySummary() { ... }
+
+    // 检测独立模式
+    function isStandaloneMode() {
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    }
+
+    if (isStandaloneMode()) {
+      console.log('应用已添加到主屏幕');
+    } else {
+      console.log('应用未添加到主屏幕');
+    }
+
+    // 监听 beforeinstallprompt 事件
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      console.log('可以添加到主屏幕');
+    });
+
+    // 当用户选择安装后
+    window.addEventListener('appinstalled', () => {
+      console.log('应用已添加到主屏幕');
+      alert('感谢您将应用添加到主屏幕！');
+      localStorage.setItem('isAppInstalled', 'true'); // 保存状态
+    });
+
+    // 检查是否已安装
+    if (localStorage.getItem('isAppInstalled') === 'true') {
+      console.log('应用已安装');
+    }
+
+    // 注册 Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+        console.log('Service Worker 注册成功:', registration);
+      }).catch(function(error) {
+        console.log('Service Worker 注册失败:', error);
+      });
+    }
+  </script>
+</body>
+</html>
